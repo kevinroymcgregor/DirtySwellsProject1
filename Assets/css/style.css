@@ -1,5 +1,5 @@
 nav-bar {
-    height: 15%;
+    height: 15vh;
 }
 
 img {
@@ -9,4 +9,8 @@ img {
 #mapDiv {
     height: 300px;
     width: 300px;
+}
+
+#myButton {
+    display: none;
 }
