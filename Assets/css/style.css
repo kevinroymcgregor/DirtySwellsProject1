@@ -1,7 +1,7 @@
 nav-bar {
-    height: 15%;
+    height: 15vh;
 }
 
-img {
-    height: 100vh;
+#myButton {
+    display: none;
 }
