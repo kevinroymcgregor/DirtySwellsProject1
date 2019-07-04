@@ -36,7 +36,7 @@ function createMap(longitude, latitude, zoom) {
 function createEventCards() {
     event.preventDefault();
     $(".cardLocation").append("<div class='col s3 m3 eventColumn'></div>");
-    $(".eventColumn").append("<div class='card-panel teal eventCard'></div>");
+    $(".eventColumn").append("<div class='card-panel teal eventCard white-text'></div>");
     $(".eventCard").append("<span>" + "Event Name: " + eventArray[0].name + "</span>");
     $(".eventCard").append("<hr>");
     $(".eventCard").append("<span>" + "Event Description: " + eventArray[0].description + "</span>");
