@@ -1,6 +1,26 @@
 const longitude = 51.505;
 const latitude = -0.09;
 const zoom = 13;
+const eventArray = [
+    {
+        name: "name1",
+        latitude: "lat1",
+        longitude: "long1",
+        description: "desc1"
+    },
+    {
+        name: "name2",
+        latitude: "lat2",
+        longitude: "long2",
+        description: "desc2"
+    },
+    {
+        name: "name3",
+        latitude: "lat3",
+        longitude: "long3",
+        description: "desc3"
+    }
+];
 
 function createMap(longitude, latitude, zoom) {
     const mymap = L.map('mapDiv').setView([longitude, latitude], zoom);
@@ -15,11 +35,14 @@ function createMap(longitude, latitude, zoom) {
 // function for dynamic card generation
 function createEventCard() {
     $(".cardLocation").append("<div class='col s3 m3 eventColumn'></div>");
-    $(".eventColumn").append("<div class='card-panel teal eventCard'>TEST</div>");
+    $(".eventColumn").append("<div class='card-panel teal eventCard'></div>");
+    $(".eventCard").append("<span>" + "Event Name: " + eventArray[0].name + "</span>");
+    $(".eventCard").append("<hr>");
+    $(".eventCard").append("<span>" + "Event Description: " + eventArray[0].description + "</span>");
     // $(".eventCard").append("<span class='white-text'>TEST</span>");
 }
 
-// todo - create array to pull from to create cards, create functions below
+// function to add new objects to eventArray using database data
 
 // function for search
 
