@@ -33,16 +33,22 @@ function createMap(longitude, latitude, zoom) {
     }).addTo(mymap);
 }
 // function for dynamic card generation
-function createEventCard() {
+function createEventCards() {
+    event.preventDefault();
     $(".cardLocation").append("<div class='col s3 m3 eventColumn'></div>");
     $(".eventColumn").append("<div class='card-panel teal eventCard'></div>");
     $(".eventCard").append("<span>" + "Event Name: " + eventArray[0].name + "</span>");
     $(".eventCard").append("<hr>");
     $(".eventCard").append("<span>" + "Event Description: " + eventArray[0].description + "</span>");
-    // $(".eventCard").append("<span class='white-text'>TEST</span>");
 }
 
 // function to add new objects to eventArray using database data
+function addEvent() {
+    event.preventDefault();
+    const eventMeeting = $("#eventInput").val().trim();
+    // eventArray.push(eventMeeting);
+    createEventCards();
+}
 
 // function for search
 
@@ -53,4 +59,4 @@ function createEventCard() {
 // function to pull data from database
 
 createMap(longitude, latitude, zoom);
-$(document).on("click", '#addEvent', createEventCard);
+$(document).on("click", '#addEvent', createEventCards);
