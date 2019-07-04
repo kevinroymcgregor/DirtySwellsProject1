@@ -12,5 +12,22 @@ function createMap(longitude, latitude, zoom) {
         accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
     }).addTo(mymap);
 }
+// function for dynamic card generation
+function createEventCard() {
+    $(".cardLocation").append("<div class='col s3 m3 eventColumn'></div>");
+    $(".eventColumn").append("<div class='card-panel teal eventCard'>TEST</div>");
+    // $(".eventCard").append("<span class='white-text'>TEST</span>");
+}
+
+// todo - create array to pull from to create cards, create functions below
+
+// function for search
+
+// function for filter
+
+// function to add data to database
+
+// function to pull data from database
 
 createMap(longitude, latitude, zoom);
+$(document).on("click", '#addEvent', createEventCard);
