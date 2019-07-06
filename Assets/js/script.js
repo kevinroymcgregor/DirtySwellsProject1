@@ -44,11 +44,13 @@ function createEventCards() {
     for (let i = 0; i < eventArray.length; i++) {
         const col = $("<div class='col s3 m3'>");
         const card = $("<div class='card-panel teal white-text'>");
-        card.append($("<span>").text(`Event Name: ${eventArray[0].name}`));
+        card.append($("<span>").text(`Event Name: ${eventArray[i].name}`));
         card.append("<hr>");
-        card.append("<span>" + "Event Description: " + eventArray[0].description + "</span>");
+        card.append("<span>" + "Event Date: " + eventArray[i].date + "</span>");
         card.append("<br>");
-        card.append("<span>" + "Game Type: " + eventArray[0].game + "</span>");
+        card.append("<span>" + "Event Description: " + eventArray[i].description + "</span>");
+        card.append("<br>");
+        card.append("<span>" + "Game Type: " + eventArray[i].game + "</span>");
         col.append(card)
         $(".cardLocation").append(col);
     }
