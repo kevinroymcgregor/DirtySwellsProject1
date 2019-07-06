@@ -1,5 +1,16 @@
-nav-bar {
-    height: 15vh;
+body {
+    background-color: rgb(46, 45, 45);
+}
+
+.navwrapper {
+    background-color: rgb(99, 143, 5);
+    height: 12vh;
+    top: 0;
+    width: 100%;
+}
+
+.brand-logo {
+    margin: -2px 7px 5px 7px;
 }
 
 img {
@@ -13,4 +24,8 @@ img {
 
 #myButton {
     display: none;
+}
+
+.myCarousel-object {
+    background-color: #0D0D0D;
 }
