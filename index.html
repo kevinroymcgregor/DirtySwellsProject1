@@ -11,7 +11,6 @@
 
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <!-- Compiled and minified JavaScript -->
   <link rel="stylesheet" href="Assets/css/style.css">
 
 
@@ -19,41 +18,42 @@
 
 <body>
 
-  <nav class="navbar nav-bar">
-    <div class="logo">
-      <h1>GAMR</h1>
-      <!--to do enter logo here -->
+
+  <nav>
+    <div class="nav-wrapper navwrapper">
+      <a href="#" class="brand-logo">Gamr</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="home.html">Home</a></li>
+      </ul>
     </div>
-    <div class="navbar-links">
-      <a href="home.html">Home</a>
-    </div>
-    <!-- to do make mobile nav -->
   </nav>
-  
-  <div class="carousel carousel-slider center">
+
+
+
+
+  <div class="carousel carousel-slider center myCarousel">
     <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2" display="none"></a>
+      <a class="btn waves-effect white grey-text darken-text-2" id="myButton">button</a>
     </div>
-    <div class="carousel-item red white-text" href="#one!">
+    <div class="carousel-item white-text myCarousel-object" href="#one!" >
       <h2>First Panel</h2>
-      <p class="white-text">This is your first panel</p>
-      <img src="assets/imgs/stock1.jpg" alt="">
+      <p class="white-text" onclick="moveSlide()">This is your first panel</p>
     </div>
-    <div class="carousel-item amber white-text" href="#two!">
+    <div class="carousel-item white-text myCarousel-object" href="#two!">
       <h2>Second Panel</h2>
       <p class="white-text">This is your second panel</p>
-      <img src="assets/imgs/stock2.jpg" alt="">
     </div>
-    <div class="carousel-item green white-text" href="#three!">
+    <div class="carousel-item white-text myCarousel-object" href="#three!">
       <h2>Third Panel</h2>
       <p class="white-text">This is your third panel</p>
     </div>
-    <div class="carousel-item blue white-text" href="#four!">
+    <div class="carousel-item white-text myCarousel-object" href="#four!">
       <h2>Fourth Panel</h2>
       <p class="white-text">This is your fourth panel</p>
     </div>
   </div>
-        x
+  </div>
+
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
