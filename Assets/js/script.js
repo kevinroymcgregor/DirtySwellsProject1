@@ -4,21 +4,24 @@ const zoom = 13;
 const eventArray = [
     {
         name: "name1",
+        description: "desc1",
+        game: "game2",
         latitude: "lat1",
-        longitude: "long1",
-        description: "desc1"
+        longitude: "long1"
     },
     {
         name: "name2",
+        description: "desc2",
+        game: "game2",
         latitude: "lat2",
-        longitude: "long2",
-        description: "desc2"
+        longitude: "long2"
     },
     {
         name: "name3",
+        description: "desc3",
+        game: "game3",
         latitude: "lat3",
-        longitude: "long3",
-        description: "desc3"
+        longitude: "long3"
     }
 ];
 
@@ -34,19 +37,31 @@ function createMap(longitude, latitude, zoom) {
 }
 // function for dynamic card generation
 function createEventCards() {
-    event.preventDefault();
-    $(".cardLocation").append("<div class='col s3 m3 eventColumn'></div>");
-    $(".eventColumn").append("<div class='card-panel teal eventCard white-text'></div>");
-    $(".eventCard").append("<span>" + "Event Name: " + eventArray[0].name + "</span>");
-    $(".eventCard").append("<hr>");
-    $(".eventCard").append("<span>" + "Event Description: " + eventArray[0].description + "</span>");
+    $(".cardLocation").empty();
+    for (let i = 0; i < eventArray.length; i++) {
+        const col = $("<div class='col s3 m3'>");
+        const card = $("<div class='card-panel teal white-text'>");
+        card.append($("<span>").text(`Event Name: ${eventArray[0].name}`));
+        card.append("<hr>");
+        card.append("<span>" + "Event Description: " + eventArray[0].description + "</span>");
+        card.append("<br>");
+        card.append("<span>" + "Game Type: " + eventArray[0].game + "</span>");
+        col.append(card)
+        $(".cardLocation").append(col);
+    }
 }
 
 // function to add new objects to eventArray using database data
-function addEvent() {
+function addEvent(eventName, eventDescription, eventGame, eventLatitude, eventLongitude) {
     event.preventDefault();
-    const eventMeeting = $("#eventInput").val().trim();
-    // eventArray.push(eventMeeting);
+    const eventMeeting = {
+        name: eventName,
+        description: eventDescription,
+        game: eventGame,
+        latitude: eventLatitude,
+        longitude: eventLongitude
+    };
+    eventArray.push(eventMeeting);
     createEventCards();
 }
 
@@ -59,4 +74,4 @@ function addEvent() {
 // function to pull data from database
 
 createMap(longitude, latitude, zoom);
-$(document).on("click", '#addEvent', createEventCards);
+$(document).on("click", '#addEvent', addEvent);
