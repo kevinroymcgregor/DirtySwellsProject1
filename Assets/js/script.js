@@ -71,6 +71,20 @@ function addEvent(eventName, eventDate, eventDescription, eventGame, eventLatitu
     createEventCards();
 }
 
+// function addEvent() {
+//     event.preventDefault();
+//     const eventMeeting = {
+//         name: $("#eventNameInput").val().trim(),
+//         date: $("#eventDateInput").val().trim(),
+//         description: $("#eventDescriptionInput").val().trim(),
+//         game: $("#eventGameInput").val().trim(),
+//         // latitude: $("eventLatitudeInput").val().trim(),
+//         // longitude: $("eventLongitudeInput").val().trim()
+//     };
+//     eventArray.push(eventMeeting);
+//     createEventCards();
+// }
+
 // function for search
 
 // function for filter
