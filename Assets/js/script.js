@@ -26,8 +26,6 @@ $('#push').on('click', function(){
   const city = $('#city').val();
   const state = $('#state').val();
   const zip = $('#zip').val();
-  // const lat = $('#lat').val();
-  // const lon = $('#lon').val();
   dataRef.ref().push({
     name: name,
     desc: desc,
@@ -37,8 +35,6 @@ $('#push').on('click', function(){
     city: city,
     state: state,
     zip: zip
-    // lat: lat,
-    // lon: lon
   });
 });
 
@@ -83,7 +79,6 @@ dataRef.ref().on('child_added', function(snapshot){
   })
 
 });
-
 
 // const eventArray = [
 //     {
