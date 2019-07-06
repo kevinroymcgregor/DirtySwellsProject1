@@ -1,0 +1,16 @@
+nav-bar {
+    height: 15vh;
+}
+
+img {
+    height: 100vh;
+}
+
+#mapDiv {
+    height: 300px;
+    width: 300px;
+}
+
+#myButton {
+    display: none;
+}
