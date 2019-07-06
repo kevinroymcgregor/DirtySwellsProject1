@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
+<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,12 +12,29 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="Assets/css/style.css">
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GAMR Welcome Page</title>
+    <!-- css file link -->
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <!-- leaflet css link -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <link rel="stylesheet" href="Assets/css/style.css">
+>>>>>>> 0cc7cb591f9b4dd9e8a832e5508533ee5d057295
 
 
 </head>
 
 <body>
 
+<<<<<<< HEAD
 
   <nav>
     <div class="nav-wrapper navwrapper">
@@ -54,14 +71,96 @@
   </div>
   </div>
 
+=======
+    <nav class="navbar nav-bar">
+        <div class="logo">
+            <h1>GAMR</h1>
+            <!--to do enter logo here -->
+        </div>
+        <div class="navbar-links">
+            <a href="home.html">Home</a>
+        </div>
+        <!-- to do make mobile nav -->
+    </nav>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <div class="carousel carousel-slider center">
+        <div class="carousel-fixed-item center">
+            <a class="btn waves-effect white grey-text darken-text-2" display="none"></a>
+        </div>
+        <div class="carousel-item red white-text" href="#one!">
+            <h2>First Panel</h2>
+            <p class="white-text">This is your first panel</p>
+            <img src="assets/imgs/stock1.jpg" alt="">
+        </div>
+        <div class="carousel-item amber white-text" href="#two!">
+            <h2>Second Panel</h2>
+            <p class="white-text">This is your second panel</p>
+            <img src="assets/imgs/stock2.jpg" alt="">
+        </div>
+        <div class="carousel-item green white-text" href="#three!">
+            <h2>Third Panel</h2>
+            <p class="white-text">This is your third panel</p>
+        </div>
+        <div class="carousel-item blue white-text" href="#four!">
+            <h2>Fourth Panel</h2>
+            <p class="white-text">This is your fourth panel</p>
+        </div>
+    </div>
 
+    <!-- testing area for maps and event card creation -->
+    <div id="mapDiv"></div>
+    <div>
+        <form>
+            <label for="name">Event Name</label>
+            <input type="text" id="name">
+            <label for="desc">Description</label>
+            <input type="text" id="desc">
+            <label for="date">Event Date</label>
+            <input type="datetime" id="date">
+            <label for="type">Game Type</label>
+            <input type="text" id="type">
+            <!-- <label for="lat">Lattitude</label>
+            <input type="number" id="lat">
+            <label for="lon">Longitude</label>
+            <input type="number" id="lon"> -->
+            <label for="street">Street Address</label>
+            <input type="text" id="street">
+            <label for="city">City</label>
+            <input type="text" id="city">
+            <label for="state">State</label>
+            <input type="text" id="state">
+            <label for="zip">Zip Code</label>
+            <input type="number" id="zip">
+            <button id="addEvent">Add Event</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="row cardLocation">
+>>>>>>> 0cc7cb591f9b4dd9e8a832e5508533ee5d057295
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="Assets/js/style.js"></script>
-  <script src="Assets/js/script.js"></script>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- firebase js -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- jQuery js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- materialize js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- leaflet js -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+    <!-- style js file -->
+    <script src="Assets/js/style.js"></script>
+    <!-- script js file -->
+    <script src="Assets/js/script.js"></script>
+
 </body>
-
 </html>
