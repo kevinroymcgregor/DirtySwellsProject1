@@ -4,6 +4,7 @@ const zoom = 13;
 const eventArray = [
     {
         name: "name1",
+        date: "date1",
         description: "desc1",
         game: "game2",
         latitude: "lat1",
@@ -11,6 +12,7 @@ const eventArray = [
     },
     {
         name: "name2",
+        date: "date2",
         description: "desc2",
         game: "game2",
         latitude: "lat2",
@@ -18,6 +20,7 @@ const eventArray = [
     },
     {
         name: "name3",
+        date: "date3",
         description: "desc3",
         game: "game3",
         latitude: "lat3",
@@ -52,10 +55,11 @@ function createEventCards() {
 }
 
 // function to add new objects to eventArray using database data
-function addEvent(eventName, eventDescription, eventGame, eventLatitude, eventLongitude) {
+function addEvent(eventName, eventDate, eventDescription, eventGame, eventLatitude, eventLongitude) {
     event.preventDefault();
     const eventMeeting = {
         name: eventName,
+        date: eventDate,
         description: eventDescription,
         game: eventGame,
         latitude: eventLatitude,
