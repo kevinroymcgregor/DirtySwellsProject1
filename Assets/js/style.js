@@ -1,4 +1,9 @@
 
+// animates addEvents-wrapper in and out
+  $("#addEvent-toggle").click(function(){
+    $("#addEvents-wrapper").slideToggle("slow");
+    $("#mapDiv").slideToggle("slow");
+  });
 
 
 
@@ -12,15 +17,9 @@ $(document).ready(function(){
     $('.carousel').carousel();
   });
 
-  var instance = M.Carousel.init({
-    fullWidth: true,
-    indicators: true
-  });
-
-  // Or with jQuery
 
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
-    indicators: true
+    indicators: false
   });
         
