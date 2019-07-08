@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    $('.collapsible').collapsible();
+});
+
 const longitude = 51.505;
 const latitude = -0.09;
 const zoom = 13;
@@ -16,7 +20,8 @@ firebase.initializeApp(config);
 
 const dataRef = firebase.database();
 
-$('#push').on('click', function () {
+function addEvent() {
+    event.preventDefault();
     // console.log($('#name').val());
     const name = $('#name').val();
     const desc = $('#desc').val();
@@ -36,7 +41,7 @@ $('#push').on('click', function () {
         state: state,
         zip: zip
     });
-});
+}
 
 dataRef.ref().on('child_added', function (snapshot) {
     // console.log(snapshot.val());
@@ -66,7 +71,7 @@ dataRef.ref().on('child_added', function (snapshot) {
     description = snapshot.val().desc;
     game = snapshot.val().type;
 
-    createEventCards();
+    createEventCards(name, date, description, game);
 
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
@@ -78,33 +83,6 @@ dataRef.ref().on('child_added', function (snapshot) {
     })
 
 });
-
-// const eventArray = [
-//     {
-//         name: "name1",
-//         date: "date1",
-//         description: "desc1",
-//         game: "game2",
-//         latitude: "lat1",
-//         longitude: "long1"
-//     },
-//     {
-//         name: "name2",
-//         date: "date2",
-//         description: "desc2",
-//         game: "game2",
-//         latitude: "lat2",
-//         longitude: "long2"
-//     },
-//     {
-//         name: "name3",
-//         date: "date3",
-//         description: "desc3",
-//         game: "game3",
-//         latitude: "lat3",
-//         longitude: "long3"
-//     }
-// ];
 
 // TO DO: add pin functionality to map, add multiple pins so that each event drops a pin on the same map
 
@@ -119,66 +97,18 @@ function createMap(longitude, latitude, zoom) {
     }).addTo(mymap);
 }
 // function for dynamic card generation
-function createEventCards() {
-    $(".cardLocation").empty();
-    const col = $("<div class='col s3 m3'>");
-    const card = $("<div class='card-panel teal white-text'>");
-    card.append($("<span>").text(`Event Name: ${name}`));
-    card.append("<hr>");
-    card.append("<span>" + "Event Date: " + date + "</span>");
-    card.append("<br>");
-    card.append("<span>" + "Event Description: " + description + "</span>");
-    card.append("<br>");
-    card.append("<span>" + "Game Type: " + game + "</span>");
-    col.append(card)
-    $(".cardLocation").append(col);
+function createEventCards(name, date, description, game) {
+    const listItem = $("<li>");
+    const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
+    const listDivBody = $("<div class='collapsible-body'><span>" + description + "</span></div>");
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<span>").text(`Event Date: ${date}`));
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<span>").text(`Event Game: ${game}`));
+    listItem.append(listDivHeader);
+    listItem.append(listDivBody);
+    $("#cardLocation").append(listItem);
 }
-
-// function createEventCards() {
-//     $(".cardLocation").empty();
-//     for (let i = 0; i < eventArray.length; i++) {
-//         const col = $("<div class='col s3 m3'>");
-//         const card = $("<div class='card-panel teal white-text'>");
-//         card.append($("<span>").text(`Event Name: ${eventArray[i].name}`));
-//         card.append("<hr>");
-//         card.append("<span>" + "Event Date: " + eventArray[i].date + "</span>");
-//         card.append("<br>");
-//         card.append("<span>" + "Event Description: " + eventArray[i].description + "</span>");
-//         card.append("<br>");
-//         card.append("<span>" + "Game Type: " + eventArray[i].game + "</span>");
-//         col.append(card)
-//         $(".cardLocation").append(col);
-//     }
-// }
-
-// function to add new objects to eventArray using database data
-// function addEvent(eventName, eventDate, eventDescription, eventGame, eventLatitude, eventLongitude) {
-//     event.preventDefault();
-//     const eventMeeting = {
-//         name: eventName,
-//         date: eventDate,
-//         description: eventDescription,
-//         game: eventGame,
-//         latitude: eventLatitude,
-//         longitude: eventLongitude
-//     };
-//     eventArray.push(eventMeeting);
-//     createEventCards();
-// }
-
-// function addEvent() {
-//     event.preventDefault();
-//     const eventMeeting = {
-//         name: $("#eventNameInput").val().trim(),
-//         date: $("#eventDateInput").val().trim(),
-//         description: $("#eventDescriptionInput").val().trim(),
-//         game: $("#eventGameInput").val().trim(),
-//         // latitude: $("eventLatitudeInput").val().trim(),
-//         // longitude: $("eventLongitudeInput").val().trim()
-//     };
-//     eventArray.push(eventMeeting);
-//     createEventCards();
-// }
 
 createMap(longitude, latitude, zoom);
 $(document).on("click", '#addEvent', addEvent);
