@@ -22,7 +22,6 @@ const dataRef = firebase.database();
 
 function addEvent() {
     event.preventDefault();
-    // console.log($('#name').val());
     const name = $('#name').val();
     const desc = $('#desc').val();
     const date = $('#date').val();
@@ -44,7 +43,6 @@ function addEvent() {
 }
 
 dataRef.ref().on('child_added', function (snapshot) {
-    // console.log(snapshot.val());
     let name;
     let date;
     let description;
@@ -71,7 +69,7 @@ dataRef.ref().on('child_added', function (snapshot) {
     description = snapshot.val().desc;
     game = snapshot.val().type;
 
-    createEventCards(name, date, description, game);
+    createEventLists(name, date, description, game);
 
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
@@ -85,7 +83,6 @@ dataRef.ref().on('child_added', function (snapshot) {
 });
 
 // TO DO: add pin functionality to map, add multiple pins so that each event drops a pin on the same map
-
 function createMap(longitude, latitude, zoom) {
     const mymap = L.map('mapDiv').setView([longitude, latitude], zoom);
 
@@ -96,8 +93,9 @@ function createMap(longitude, latitude, zoom) {
         accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
     }).addTo(mymap);
 }
-// function for dynamic card generation
-function createEventCards(name, date, description, game) {
+
+// function for dynamic event list generation
+function createEventLists(name, date, description, game) {
     const listItem = $("<li>");
     const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
     const listDivBody = $("<div class='collapsible-body'><span>" + description + "</span></div>");
@@ -107,7 +105,7 @@ function createEventCards(name, date, description, game) {
     listDivBody.append($("<span>").text(`Event Game: ${game}`));
     listItem.append(listDivHeader);
     listItem.append(listDivBody);
-    $("#cardLocation").append(listItem);
+    $("#listLocation").append(listItem);
 }
 
 createMap(longitude, latitude, zoom);
