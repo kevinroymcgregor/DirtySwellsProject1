@@ -71,6 +71,7 @@ dataRef.ref().on('child_added', function (snapshot) {
     game = snapshot.val().type;
 
     createEventLists(name, date, description, game);
+    createMap(longitude, latitude, zoom, name, date);
 
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
@@ -84,7 +85,7 @@ dataRef.ref().on('child_added', function (snapshot) {
 });
 
 // TO DO: add pin functionality to map, add multiple pins so that each event drops a pin on the same map
-function createMap(longitude, latitude, zoom) {
+function createMap(longitude, latitude, zoom, name, date) {
     const mymap = L.map('mapDiv').setView([longitude, latitude], zoom);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -93,6 +94,8 @@ function createMap(longitude, latitude, zoom) {
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
     }).addTo(mymap);
+    const marker = L.marker([51.5, -0.09]).addTo(mymap);
+    marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
 }
 
 // function for dynamic event list generation
@@ -109,5 +112,4 @@ function createEventLists(name, date, description, game) {
     $("#listLocation").append(listItem);
 }
 
-createMap(longitude, latitude, zoom);
 $(document).on("click", '#addEvent', addEvent);
