@@ -1,11 +1,7 @@
 var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, {
-  accordion: false
+    accordion: false
 });
-
-const longitude = 51.505;
-const latitude = -0.09;
-const zoom = 13;
 
 const config = {
     apiKey: "AIzaSyC6qpXOXBf2vixbC6YTlN6ihu8i9h9OkW8",
@@ -21,27 +17,14 @@ firebase.initializeApp(config);
 
 const dataRef = firebase.database();
 
-function addEvent() {
-    event.preventDefault();
-    const name = $('#name').val();
-    const desc = $('#desc').val();
-    const date = $('#date').val();
-    const type = $('#type').val();
-    const street = $('#street').val();
-    const city = $('#city').val();
-    const state = $('#state').val();
-    const zip = $('#zip').val();
-    dataRef.ref().push({
-        name: name,
-        desc: desc,
-        date: date,
-        type: type,
-        street: street,
-        city: city,
-        state: state,
-        zip: zip
-    });
-}
+// create map on page
+const mymap = L.map('mapDiv').setView([33.348942153835495, -111.84857939835639], 10);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
+}).addTo(mymap);
 
 dataRef.ref().on('child_added', function (snapshot) {
     let name;
@@ -71,7 +54,7 @@ dataRef.ref().on('child_added', function (snapshot) {
     game = snapshot.val().type;
 
     createEventLists(name, date, description, game);
-    createMap(long, lat, name, date);
+    addMapPin(long, lat, name, date);
 
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
@@ -84,17 +67,33 @@ dataRef.ref().on('child_added', function (snapshot) {
 
 });
 
-// TO DO: add pin functionality to map, add multiple pins so that each event drops a pin on the same map
-function createMap(longitude, latitude, name, date) {
-    const mymap = L.map('mapDiv').setView([33.348942153835495, -111.84857939835639], 10);
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox.streets',
-        accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
-    }).addTo(mymap);
+// add a pin to the map
+function addMapPin(longitude, latitude, name, date) {
     const marker = L.marker([33.3, -111.8]).addTo(mymap);
     marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
+}
+
+// add event to firebase from form on page
+function addEvent() {
+    event.preventDefault();
+    const name = $('#name').val();
+    const desc = $('#desc').val();
+    const date = $('#date').val();
+    const type = $('#type').val();
+    const street = $('#street').val();
+    const city = $('#city').val();
+    const state = $('#state').val();
+    const zip = $('#zip').val();
+    dataRef.ref().push({
+        name: name,
+        desc: desc,
+        date: date,
+        type: type,
+        street: street,
+        city: city,
+        state: state,
+        zip: zip
+    });
 }
 
 // function for dynamic event list generation
