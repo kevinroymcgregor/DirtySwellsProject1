@@ -71,7 +71,7 @@ dataRef.ref().on('child_added', function (snapshot) {
     game = snapshot.val().type;
 
     createEventLists(name, date, description, game);
-    createMap(longitude, latitude, zoom, name, date);
+    createMap(long, lat, name, date);
 
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
@@ -85,16 +85,15 @@ dataRef.ref().on('child_added', function (snapshot) {
 });
 
 // TO DO: add pin functionality to map, add multiple pins so that each event drops a pin on the same map
-function createMap(longitude, latitude, zoom, name, date) {
-    const mymap = L.map('mapDiv').setView([longitude, latitude], zoom);
-
+function createMap(longitude, latitude, name, date) {
+    const mymap = L.map('mapDiv').setView([33.348942153835495, -111.84857939835639], 10);
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
         accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
     }).addTo(mymap);
-    const marker = L.marker([51.5, -0.09]).addTo(mymap);
+    const marker = L.marker([33.3, -111.8]).addTo(mymap);
     marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
 }
 
