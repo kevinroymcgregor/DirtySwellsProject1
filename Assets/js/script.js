@@ -32,28 +32,12 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 
 dataRef.ref().on('child_added', function (snapshot) {
-    // console.log(snapshot.val());
     let name;
     let date;
     let description;
     let game;
     let lat;
     let long;
-
-
-    // const queryString = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + snapshot.val().street + 
-    //   "%2C%20" + snapshot.val().city + "%2C%20" + snapshot.val().state + "%20" + snapshot.val().zip + 
-    //   ".json?access_token=pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g&cachebuster=1562436483413" + 
-    //   "&autocomplete=true&types=address%2Cpostcode&limit=1"
-    // $.ajax({
-    //   url: queryString,
-    //   method: "GET"
-    // }).then(function(response){
-    //   console.log(response);
-    //   console.log(response.features[0].center);
-    //   lat = response.features[0].center[1];
-    //   long = response.features[0].center[0];
-    // });
 
     name = snapshot.val().name;
     date = snapshot.val().date;
@@ -62,9 +46,6 @@ dataRef.ref().on('child_added', function (snapshot) {
     lat = snapshot.val().lat;
     long = snapshot.val().long;
 
-    createEventLists(name, date, description, game);
-    addMapPin(long, lat, name, date);
-
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
     $.ajax({
@@ -72,7 +53,19 @@ dataRef.ref().on('child_added', function (snapshot) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+        
+        // name, description, min players, max players, min play time, max play time, picture, 
+        let gameName = response.games[0].names[0];
+        let gameDesc = response.games[0].description;
+        let gameMinPlayers = response.games[0].min_players;
+        let gameMaxPlayers = response.games[0].max_players;
+        let gameMinPlayTime = response.games[0].min_playtime;
+        let gameMaxPlayTime = response.games[0].max_playtime;
+        let gamePic = response.games[0].images.thumb;
+        createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic);
     })
+
+    addMapPin(long, lat, name, date);
 
 });
 
@@ -93,8 +86,6 @@ function addEvent() {
     const city = $('#city').val();
     const state = $('#state').val();
     const zip = $('#zip').val();
-    // let lat;
-    // let long;
     const queryString = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + street +
         "%2C%20" + city + "%2C%20" + state + "%20" + zip +
         ".json?access_token=pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g&cachebuster=1562436483413" +
@@ -111,7 +102,6 @@ function addEvent() {
             console.log(response.features[0].center);
             const latitude = response.features[0].center[1];
             const longitude = response.features[0].center[0];
-            // return latitude;
             dataRef.ref().push({
                 name: name,
                 desc: desc,
@@ -127,24 +117,24 @@ function addEvent() {
         })
     }
     else {
-        // const errorLabel = $('<label for="zip">');
-        // errorLabel.text = 'Please enter a valid zip code';
         $('#zipLabel').empty().append('Zip Code - Invalid Zip');
         $('#zipLabel').attr('class', 'red-text');
         $('#zip').attr('class', 'red-text');
     };
-    // console.log(lat);
-
     console.log('stuff goes here');
 }
 
 // function for dynamic event list generation
-function createEventLists(name, date, description, game) {
+function createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic) {
     const listItem = $("<li>");
     const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
     const listDivBody = $("<div class='collapsible-body'><span>" + description + "</span></div>");
+
+    // modal creation
     const mod = $(`<div class="modal" id="modal${game}">`);
     const modContent = $('<div class="modal-content">');
+    
+    // modal content
     modContent.append('<h4>Error</h4><p>Please enter a valid zip code</p>');
     const modFooter = $('<div class="modal-footer">');
     modFooter.append('<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>');
@@ -152,6 +142,7 @@ function createEventLists(name, date, description, game) {
     $(mod).append(modFooter);
     $('.modal').modal();
     $('body').append(mod);
+
     listDivBody.append($("<br>"));
     listDivBody.append($("<span>").text(`Event Date: ${date}`));
     listDivBody.append($("<br>"));
