@@ -2,25 +2,18 @@
 
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>GAMR Welcome Page</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>GAMR Welcome Page</title>
-  <!-- css file link -->
-  
-  <!-- leaflet css link -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="Assets/css/style.css">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GamR Welcome Page</title>
+    <!-- css file link -->
+    <link rel="stylesheet" href="Assets/css/style.css">
+    <!-- leaflet css link -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 </head>
 
@@ -34,9 +27,6 @@
       </ul>
     </div>
   </nav>
-
-
-
 
   <div class="carousel carousel-slider center myCarousel">
     <div class="carousel-fixed-item center">
@@ -54,12 +44,9 @@
       <h2>Third Panel</h2>
       <p class="white-text">This is your third panel</p>
     </div>
-    <div class="carousel-item white-text myCarousel-object" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
     </div>
-  </div>
 
+  </div>
 
   <!-- testing area for maps and event card creation -->
   <div class="events-wrapper">
@@ -98,37 +85,38 @@
         <button id="addEvent">Add Event</button>
       </form>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="collapsible expandable" id="listLocation">
 
-        
-
-    <div class="container"></div>
-      <div class="row cardLocation">
-
-      </div>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
+    <br>
+    <br>
+    <br>
+    <br>
 
+    <!-- All Js below -->
 
-
-  <!-- All Js below -->
-
-  <!-- firebase js -->
-  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-  <!-- jQuery js -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <!-- materialize js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <!-- leaflet js -->
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-    crossorigin=""></script>
-  <!-- style js file -->
-  <script src="Assets/js/style.js"></script>
-  <!-- script js file -->
-  <script src="Assets/js/script.js"></script>
-
+    <!-- firebase js -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- jQuery js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- materialize js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- leaflet js -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+    <!-- style js file -->
+    <script src="Assets/js/style.js"></script>
+    <!-- script js file -->
+    <script src="Assets/js/script.js"></script>
 </body>
 
 </html>
