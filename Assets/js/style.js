@@ -1,6 +1,7 @@
 
 // animates addEvents-wrapper in and out
   $("#addEvent-toggle").click(function(){
+    event.preventDefault();
     $("#addEvents-wrapper").slideToggle("slow");
     $("#mapDiv").slideToggle("slow");
   });
