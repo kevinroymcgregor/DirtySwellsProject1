@@ -55,13 +55,13 @@ dataRef.ref().on('child_added', function (snapshot) {
         console.log(response);
         
         // name, description, min players, max players, min play time, max play time, picture, 
-        let gameName = response.games[0].names[0];
+        let gameName = response.games[0].name;
         let gameDesc = response.games[0].description;
         let gameMinPlayers = response.games[0].min_players;
         let gameMaxPlayers = response.games[0].max_players;
         let gameMinPlayTime = response.games[0].min_playtime;
         let gameMaxPlayTime = response.games[0].max_playtime;
-        let gamePic = response.games[0].images.thumb;
+        let gamePic = response.games[0].images.small;
         createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic);
     })
 
@@ -135,7 +135,11 @@ function createEventLists(name, date, description, game, gameName, gameDesc, gam
     const modContent = $('<div class="modal-content">');
     
     // modal content
-    modContent.append('<h4>Error</h4><p>Please enter a valid zip code</p>');
+    modContent.append(`<img src=${gamePic}>
+    <h4>Game Name: ${gameName}</h4>
+    <p>Players: ${gameMinPlayers} - ${gameMaxPlayers}</p>
+    <p>Playtime (minutes): ${gameMinPlayTime} - ${gameMaxPlayTime}</p>
+    <p>Description: ${gameDesc}</p>`);
     const modFooter = $('<div class="modal-footer">');
     modFooter.append('<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>');
     $(mod).append(modContent);
@@ -148,7 +152,7 @@ function createEventLists(name, date, description, game, gameName, gameDesc, gam
     listDivBody.append($("<br>"));
     listDivBody.append($("<span>").text(`Event Game: ${game}`));
     listDivBody.append($("<br>"));
-    listDivBody.append($('<button>').text('Game Info').attr('data-target', `modal${game}`).attr('class', "btn modal-trigger"));
+    listDivBody.append($('<button>').text('Game Info').attr('data-target', `modal${game}`).attr('class', "btn modal-trigger waves-effect"));
 
     listItem.append(listDivHeader);
     listItem.append(listDivBody);
