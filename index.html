@@ -28,6 +28,7 @@
     </div>
   </nav>
 
+
   <div class="carousel carousel-slider center myCarousel">
     <div class="carousel-fixed-item center">
       <a class="waves-effect white grey-text darken-text-2" id="myButton">button</a>
@@ -35,6 +36,7 @@
     <div class="carousel-item white-text myCarousel-object" href="#one!">
       <h2>First Panel</h2>
       <p class="white-text" onclick="moveSlide()">This is your first panel</p>
+<<<<<<< HEAD
     </div>
     <div class="carousel-item white-text myCarousel-object" href="#two!">
       <h2>Second Panel</h2>
@@ -46,6 +48,41 @@
     </div>
     </div>
 
+
+    <!-- add event form -->
+    <div id="addEvents-wrapper">
+      <form>
+        <label for="name">Event Name</label>
+        <input type="text" class="white-text" id="name">
+        <label for="desc">Description</label>
+        <input type="text" class="white-text" id="desc">
+        <label for="date">Event Date</label>
+        <input type="datetime" class="white-text" id="date">
+        <label for="type">Game Type</label>
+        <input type="text" class="white-text" id="type">
+        <!-- <label for="lat">Lattitude</label>
+            <input type="number" id="lat">
+            <label for="lon">Longitude</label>
+            <input type="number" id="lon"> -->
+        <label for="street">Street Address</label>
+        <input type="text" class="white-text" id="street">
+        <label for="city">City</label>
+        <input type="text" class="white-text" id="city">
+        <label for="state">State</label>
+        <input type="text" class="white-text" id="state">
+        <label for="zip">Zip Code</label>
+        <input type="number" class="white-text" id="zip">
+        <button id="addEvent">Add Event</button>
+      </form>
+    </div>
+
+        
+
+    <div class="container"></div>
+      <div class="row cardLocation">
+
+      </div>
+    </div>
   </div>
 
   <!-- testing area for maps and event card creation -->
@@ -56,6 +93,7 @@
     </div>
     <!-- this is the map -->
     <div id="mapDiv"></div>
+
 
     <button id="addEvent-toggle">Click Here for New Event</button>
 
@@ -117,6 +155,28 @@
     <script src="Assets/js/style.js"></script>
     <!-- script js file -->
     <script src="Assets/js/script.js"></script>
+
+  <!-- All Js below -->
+
+  <!-- firebase js -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <!-- jQuery js -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <!-- materialize js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- leaflet js -->
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+  <!-- style js file -->
+  <script src="Assets/js/style.js"></script>
+  <!-- script js file -->
+  <script src="Assets/js/script.js"></script>
+
+
+  
 </body>
 
 </html>
