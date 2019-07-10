@@ -1,14 +1,25 @@
 
-
-  var instance = M.Carousel.init({
-    fullWidth: true,
-    indicators: true
+// animates addEvents-wrapper in and out
+  $("#addEvent-toggle").click(function(){
+    $("#addEvents-wrapper").slideToggle("slow");
+    $("#mapDiv").slideToggle("slow");
   });
 
-  // Or with jQuery
+
+
+
+
+
+
+// anything after this is for materilize... DO NOT TOUCH
+
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });
+
 
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
-    indicators: true
+    indicators: false
   });
         
