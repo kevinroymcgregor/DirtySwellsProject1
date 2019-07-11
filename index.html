@@ -2,51 +2,58 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GamR Welcome Page</title>
-    <!-- css file link -->
-    <link rel="stylesheet" href="Assets/css/style.css">
-    <!-- leaflet css link -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin="" />
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>GamR Welcome Page</title>
+  <!-- css file link -->
+  <link rel="stylesheet" href="Assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">  
+  <!-- leaflet css link -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
 <body>
 
-    <nav>
-        <div class="nav-wrapper navwrapper">
-            <a href="#" class="brand-logo">GamR</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="home.html">Home</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="carousel carousel-slider center myCarousel">
-        <div class="carousel-fixed-item center">
-            <a class="waves-effect white grey-text darken-text-2" id="myButton">button</a>
-        </div>
-        <div class="carousel-item white-text myCarousel-object" href="#one!">
-            <h2>First Panel</h2>
-            <p class="white-text" onclick="moveSlide()">This is your first panel</p>
-        </div>
-        <div class="carousel-item white-text myCarousel-object" href="#two!">
-            <h2>Second Panel</h2>
-            <p class="white-text">This is your second panel</p>
-        </div>
-        <div class="carousel-item white-text myCarousel-object" href="#three!">
-            <h2>Third Panel</h2>
-            <p class="white-text">This is your third panel</p>
-        </div>
+  <nav>
+    <div class="nav-wrapper navwrapper">
+      <a href="#" class="brand-logo">GamR</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
+      </ul>
     </div>
+  </nav>
 
+  <div class="carousel carousel-slider center myCarousel">
+    <div class="carousel-fixed-item center">
+      <a class="waves-effect white grey-text darken-text-2" id="myButton">button</a>
     </div>
+    <div class="carousel-item white-text myCarousel-object" href="#one!">
+      <h2>First Panel</h2>
+      <p class="white-text" onclick="moveSlide()">This is your first panel</p>
+    </div>
+    <div class="carousel-item white-text myCarousel-object" href="#two!">
+      <h2>Second Panel</h2>
+      <p class="white-text">This is your second panel</p>
+    </div>
+    <div class="carousel-item white-text myCarousel-object" href="#three!">
+      <h2>Third Panel</h2>
+      <p class="white-text">This is your third panel</p>
+    </div>
+  </div>
+
+  <div class="events-wrapper">
+    <div class="nav-wrapper event-nav">
+      <div class="brand-logo">Find Events Near You</div>
+    </div>
+    
+    <!-- this is the map -->
+    <div id="mapDiv"></div>
 
     <!-- testing area for maps and event card creation -->
     <div class="events-wrapper">

@@ -6,7 +6,6 @@ var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, {
     accordion: false
 });
-
 const config = {
     apiKey: "AIzaSyC6qpXOXBf2vixbC6YTlN6ihu8i9h9OkW8",
     authDomain: "gamr-13304.firebaseapp.com",
@@ -16,9 +15,7 @@ const config = {
     messagingSenderId: "629746508175",
     appId: "1:629746508175:web:f78d2c9edbb66f2f"
 };
-
 firebase.initializeApp(config);
-
 const dataRef = firebase.database();
 
 // create map on page
@@ -29,7 +26,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoiZ2FtZWtpbmczMTQiLCJhIjoiY2p4eTQ0eHR2MDZkNjNjbHQxMG1vZGl3YiJ9.KvEGNREjNS12RUEqFehhkw'
 }).addTo(mymap);
-
 dataRef.ref().on('child_added', function (snapshot) {
     let name;
     let date;
@@ -38,14 +34,12 @@ dataRef.ref().on('child_added', function (snapshot) {
     let lat;
     let long;
     let m;
-
     name = snapshot.val().name;
     date = snapshot.val().date;
     description = snapshot.val().desc;
     game = snapshot.val().type;
     lat = snapshot.val().lat;
     long = snapshot.val().long;
-
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
     $.ajax({
@@ -62,18 +56,14 @@ dataRef.ref().on('child_added', function (snapshot) {
         let gameMaxPlayTime = response.games[0].max_playtime;
         let gamePic = response.games[0].images.small;
         createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic);
-    })
-
+    });
     addMapPin(long, lat, name, date);
-
 });
-
 // add a pin to the map
 function addMapPin(longitude, latitude, name, date) {
     const marker = L.marker([latitude, longitude]).addTo(mymap);
     marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
 }
-
 function resetLabels(){
     $('#zipLabel').empty().append('Zip Code');
     $('#zipLabel').attr('class', '');
@@ -107,7 +97,6 @@ function resetLabels(){
     $('#stateLabel').attr('class', '');
     $('#state').attr('class', 'white-text');
 }
-
 // add event to firebase from form on page
 function addEvent() {
     event.preventDefault();
@@ -188,7 +177,6 @@ function addEvent() {
         $('#state').attr('class', 'red-text');
     }
 }
-
 // function for dynamic event list generation
 function createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic) {
     // modal creation

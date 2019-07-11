@@ -1,3 +1,7 @@
+// $(document).ready(function(){
+//     $('.parallax').parallax();
+// });
+
 
 // animates addEvents-wrapper in and out
 $("#addEvent-toggle").click(function () {
