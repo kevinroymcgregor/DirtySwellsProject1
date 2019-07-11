@@ -61,28 +61,25 @@
 
         <!-- add event form -->
         <div id="addEvents-wrapper">
-            <form>
-                <label for="name">Event Name</label>
+            <form id="myForm">
+                <label for="name" id="nameLabel">Event Name</label>
                 <input type="text" class="white-text" id="name">
-                <label for="desc">Description</label>
+                <label for="desc" id="descLabel">Description</label>
                 <input type="text" class="white-text" id="desc">
-                <label for="date">Event Date</label>
+                <label for="date" id="dateLabel">Event Date</label>
                 <input type="datetime" class="white-text" id="date">
-                <label for="type">Game Type</label>
+                <label for="type" id="typeLabel">Game to be Played</label>
                 <input type="text" class="white-text" id="type">
-                <!-- <label for="lat">Lattitude</label>
-            <input type="number" id="lat">
-            <label for="lon">Longitude</label>
-            <input type="number" id="lon"> -->
-                <label for="street">Street Address</label>
+                <label for="street" id="streetLabel">Street Address</label>
                 <input type="text" class="white-text" id="street">
-                <label for="city">City</label>
+                <label for="city" id="cityLabel">City</label>
                 <input type="text" class="white-text" id="city">
-                <label for="state">State</label>
+                <label for="state" id="stateLabel">State</label>
                 <input type="text" class="white-text" id="state">
                 <label for="zip" id="zipLabel">Zip Code</label>
                 <input type="number" class="white-text" id="zip">
                 <button id="addEvent">Add Event</button>
+                <button id="resetForm">Reset</button>
             </form>
         </div>
         <div class="container">
@@ -101,6 +98,8 @@
 
         <!-- All Js below -->
 
+        <!-- Moment js -->
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
         <!-- firebase js -->
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
