@@ -64,9 +64,6 @@ function addMapPin(longitude, latitude, name, date) {
     const marker = L.marker([latitude, longitude]).addTo(mymap);
     marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
 }
-<<<<<<< HEAD
-
-=======
 function resetLabels() {
     $('#zipLabel').empty().append('Zip Code');
     $('#zipLabel').attr('class', '');
@@ -100,7 +97,6 @@ function resetLabels() {
     $('#stateLabel').attr('class', '');
     $('#state').attr('class', 'white-text');
 }
->>>>>>> 9cc51e39f73fefe6480a8be87ddf73dc046c9c49
 // add event to firebase from form on page
 function addEvent() {
     event.preventDefault();
@@ -203,24 +199,23 @@ function createEventLists(name, date, description, game, gameName, gameDesc,
 
     // list creation and content
     const listItem = $("<li>");
-    const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
+    const listDivHeader = $("<div class='collapsible-header' id='events-header'>" + name + "</div>");
     const listDivBody = $("<div class='collapsible-body'><span>Event Date: " + date + "</span></div>");
     listDivBody.append($("<br>"));
     listDivBody.append($("<span>").text(`Game being played: ${game}`));
+    // listDivBody.append($("<br>"));
     listDivBody.append($("<br>"));
-    listDivBody.append($("<br>"));
-    listDivBody.append($('<button>').text('Game Info').attr('data-target', `modal${game}`).attr('class', "btn modal-trigger waves-effect"));
-    listDivBody.append($("<br>"));
-    listDivBody.append($("<br>"));
+    // listDivBody.append($("<br>"));
     listDivBody.append($("<span>").text(`${description}`));
     listDivBody.append($("<br>"));
-    listDivBody.append($("<br>"));
+    // listDivBody.append($("<br>"));
     listItem.append(listDivHeader);
     listItem.append(listDivBody);
     $("#listLocation").append(listItem);
-}
-
-function resetForm() {
+    listDivBody.append($('<button>').text('Game Details').attr('data-target', `modal${game}`).attr('class', "btn modal-trigger waves-effect").attr('id', 'info-btn'));
+  }
+  
+  function resetForm() {
     event.preventDefault();
     resetLabels();
     document.getElementById("myForm").reset();

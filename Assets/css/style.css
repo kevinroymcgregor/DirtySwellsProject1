@@ -26,9 +26,16 @@ body {
     background-color: rgb(99, 143, 5);
     border-bottom: none;
     height: 4vh;
-    padding: 4px 0;
+    padding: 4px;
     border-radius: 4px 4px 0 0;
+    color: whitesmoke;
 }
+
+@media only screen and (max-width: 1000px) {
+    .event-nav{
+        text-align: center;
+    }
+  }
 
 #addEvents-wrapper {
     padding: 4px 6px;
@@ -42,8 +49,7 @@ input[type="number"] {
     appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
 }
 
@@ -68,21 +74,114 @@ input[type=number]::-webkit-outer-spin-button {
     height: 3vh;
     border: none;
     background-color: rgb(99, 143, 5);
+    /* background: linear-gradient(120deg, rgb(99, 143, 5), rgb(143, 199, 23),  rgb(180, 255, 6), rgb(218, 255, 6),rgb(180, 255, 6), rgb(143, 199, 23), rgb(99, 143, 5)); */
     margin: 2px 0;
     border-radius: 4px;
+    color: whitesmoke;
 }
 
 
-.events-header {
-    color: grey;
-    background-color: yellow;
+/* @keyframes colorEffect {
+    0% {
+        background-color: rgb(143, 199, 23);
+    }
+    20% {
+        background-color: rgb(243, 239, 8);
+        height: 3.5vh;
+        margin: 3px 0;
+    }
+    40% {
+        background-color: rgb(230, 16, 16);
+        height: 3vh;
+        margin: 2.5px 0;
+    }
+    60% {
+        background-color: rgb(230, 16, 212);
+        height: 3.5vh;
+        margin: 3px 0;
+    }
+    80% {
+        background-color: rgb(21, 219, 233);
+    }
+    100% {
+        background-color: rgb(99, 143, 5);
+    }
+}
+
+@-webkit-keyframes colorEffect {
+    0% {
+        background-color: rgb(143, 199, 23);
+    }
+    20% {
+        background-color: rgb(243, 239, 8);
+        height: 4vh; width:
+    }
+    40% {
+        background-color: rgb(230, 16, 16);
+    }
+    60% {
+        background-color: rgb(230, 16, 212);
+        height: 4vh;
+    }
+    80% {
+        background-color: rgb(21, 219, 233);
+    }
+    100% {
+        background-color: rgb(99, 143, 5);
+    }
+} */
+
+#addEvent-toggle:hover {
+    background: linear-gradient(120deg, rgb(99, 143, 5), rgb(127, 182, 9),  rgb(148, 209, 5), rgb(167, 248, 17));
+    background-size: 1800% 1800%;
+    
+    -webkit-animation: rainbow 6s ease infinite;
+    animation: rainbow 7s ease infinite;
+}
+    
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%; height: 3.5vh; margin: 3px 0; color: black; font-size: 18px}}
+    100%{background-position:0% 82%}
+
+
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%; height: 3.5vh; margin: 3px 0; color: black; font-size: 18px}}
+    100%{background-position:0% 82%}
+
+
+#events-header {
+    color: rgb(207, 207, 201);
+    background-color: rgb(92, 88, 88);
     font-family: "Press Start 2P";
+    border: 2px double rgb(105, 105, 105);
 }
 
 .collapsible-body {
-    background: rgb(51, 204, 255);
+    background-color: rgb(218, 219, 219);
+    justify-content: center;
+    margin-bottom: 3px;
+    border: 0 2px;
+    text-align: justify;
+    text-justify: auto;
 }
 
-.newEvent:hover {
-    background-color: orange;
+.collapsible-body span{
+    width: 80%;
+    margin: 8px;
+}
+
+#info-btn {
+    background-color: rgb(99, 143, 5, 0.85);
+}
+
+.newEvents-wrapper {
+    width: 80vw;
+    margin: auto;
+    border: none;
+}
+
+.collapsible, .expandable {
+    border: none;
 }

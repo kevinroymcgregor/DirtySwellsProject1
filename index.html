@@ -1,243 +1,35 @@
 <!DOCTYPE html>
 
 <head>
-<<<<<<< HEAD
+
 
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   <title>GamR Welcome Page</title>
-
-  <!-- css file link -->
-
-  <link rel="stylesheet" href="Assets/css/style.css">
-
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
   <!-- leaflet css link -->
-
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-
     crossorigin="" />
-
   <!-- Compiled and minified CSS -->
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-=======
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GamR Welcome Page</title>
-    <!-- css file link -->
-    <link rel="stylesheet" href="Assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <!-- leaflet css link -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossorigin="" />
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
->>>>>>> 9cc51e39f73fefe6480a8be87ddf73dc046c9c49
+  <!-- css file link -->
+  <link rel="stylesheet" href="Assets/css/style.css">
 </head>
 
 <body>
 
-<<<<<<< HEAD
   <nav>
-
     <div class="nav-wrapper navwrapper">
-
       <a href="#" class="brand-logo">GamR</a>
-
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-        <li><a href="home.html">Home</a></li>
-
+        <li><a href="#">Home</a></li>
       </ul>
-
     </div>
-
   </nav>
 
-  <div class="carousel carousel-slider center myCarousel">
-
-    <div class="carousel-fixed-item center">
-
-      <a class="waves-effect white grey-text darken-text-2" id="myButton">button</a>
-
-    </div>
-
-    <div class="carousel-item white-text myCarousel-object" href="#one!">
-
-      <h2>First Panel</h2>
-
-      <p class="white-text" onclick="moveSlide()">This is your first panel</p>
-
-    </div>
-
-    <div class="carousel-item white-text myCarousel-object" href="#two!">
-
-      <h2>Second Panel</h2>
-
-      <p class="white-text">This is your second panel</p>
-
-    </div>
-
-    <div class="carousel-item white-text myCarousel-object" href="#three!">
-
-      <h2>Third Panel</h2>
-
-      <p class="white-text">This is your third panel</p>
-
-    </div>
-
-  </div>
-
-  
-
-  <div class="events-wrapper">
-
-    <div class="nav-wrapper event-nav">
-
-      <div class="brand-logo">Find Events Near You</div>
-
-    </div>
-
-    
-
-    <!-- this is the map -->
-
-    <div id="mapDiv"></div>
-
-    
-
-    <button id="addEvent-toggle">Click Here for New Event</button>
-
-    <!-- add event form -->
-
-    <div id="addEvents-wrapper">
-
-      <form>
-
-        <label for="name">Event Name</label>
-
-        <input type="text" class="white-text" id="name">
-
-        <label for="desc">Description</label>
-
-        <input type="text" class="white-text" id="desc">
-
-        <label for="date">Event Date</label>
-
-        <input type="datetime" class="white-text" id="date">
-
-        <label for="type">Game Type</label>
-
-        <input type="text" class="white-text" id="type">
-
-        <!-- <label for="lat">Lattitude</label>
-
-            <input type="number" id="lat">
-
-            <label for="lon">Longitude</label>
-
-            <input type="number" id="lon"> -->
-
-        <label for="street">Street Address</label>
-
-        <input type="text" class="white-text" id="street">
-
-        <label for="city">City</label>
-
-        <input type="text" class="white-text" id="city">
-
-        <label for="state">State</label>
-
-        <input type="text" class="white-text" id="state">
-
-        <label for="zip">Zip Code</label>
-
-        <input type="number" class="white-text" id="zip">
-
-        <button id="addEvent">Add Event</button>
-
-      </form>
-
-    </div>
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col s12">
-
-          <ul class="collapsible expandable" id="listLocation">
-
-          </ul>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <br>
-
-    <br>
-
-    <br>
-
-    <br>
-
-    <!-- firebase js -->
-
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-
-    <!-- jQuery js -->
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-    <!-- materialize js -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <!-- leaflet js -->
-
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-
-      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-
-      crossorigin=""></script>
-
-    <!-- style js file -->
-
-    <script src="Assets/js/style.js"></script>
-
-    <!-- script js file -->
-
-    <script src="Assets/js/script.js"></script>
-
-=======
-    <nav>
-        <div class="nav-wrapper navwrapper">
-            <a href="#" class="brand-logo">GamR</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#">Home</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- <div class="carousel carousel-slider center myCarousel">
+  <!-- <div class="carousel carousel-slider center myCarousel">
         <div class="carousel-fixed-item center">
             <a class="waves-effect white grey-text darken-text-2" id="myButton">button</a>
         </div>
@@ -255,75 +47,71 @@
         </div>
     </div> -->
 
-    <!-- testing area for maps and event card creation -->
-    <div class="events-wrapper">
-        <div class="nav-wrapper event-nav">
-            <div class="brand-logo">Find Events Near You</div>
+  <!-- testing area for maps and event card creation -->
+  <div class="events-wrapper">
+    <div class="nav-wrapper event-nav">
+      <div class="brand-logo">Find Events Near You</div>
 
-        </div>
-        <!-- this is the map -->
-        <div id="mapDiv"></div>
+    </div>
+    <!-- this is the map -->
+    <div id="mapDiv"></div>
 
-        <button id="addEvent-toggle" class="newEvent">Click Here for New Event</button>
+    <button id="addEvent-toggle" class="newEvent">Create New Event</button>
 
-        <!-- add event form -->
-        <div id="addEvents-wrapper">
-            <form id="myForm">
-                <label for="name" id="nameLabel">Event Name</label>
-                <input type="text" class="white-text" id="name">
-                <label for="desc" id="descLabel">Description</label>
-                <input type="text" class="white-text" id="desc">
-                <label for="date" id="dateLabel">Event Date</label>
-                <input type="datetime" class="white-text" id="date">
-                <label for="type" id="typeLabel">Game to be Played</label>
-                <input type="text" class="white-text" id="type">
-                <label for="street" id="streetLabel">Street Address</label>
-                <input type="text" class="white-text" id="street">
-                <label for="city" id="cityLabel">City</label>
-                <input type="text" class="white-text" id="city">
-                <label for="state" id="stateLabel">State</label>
-                <input type="text" class="white-text" id="state">
-                <label for="zip" id="zipLabel">Zip Code</label>
-                <input type="number" class="white-text" id="zip">
-                <button id="addEvent">Add Event</button>
-                <button id="resetForm">Reset</button>
-            </form>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <ul class="collapsible expandable" id="listLocation">
+    <!-- add event form -->
+    <div id="addEvents-wrapper">
+      <form id="myForm">
+        <label for="name" id="nameLabel">Event Name</label>
+        <input type="text" class="white-text" id="name">
+        <label for="desc" id="descLabel">Description</label>
+        <input type="text" class="white-text" id="desc">
+        <label for="date" id="dateLabel">Event Date</label>
+        <input type="datetime" class="white-text" id="date">
+        <label for="type" id="typeLabel">Game to be Played</label>
+        <input type="text" class="white-text" id="type">
+        <label for="street" id="streetLabel">Street Address</label>
+        <input type="text" class="white-text" id="street">
+        <label for="city" id="cityLabel">City</label>
+        <input type="text" class="white-text" id="city">
+        <label for="state" id="stateLabel">State</label>
+        <input type="text" class="white-text" id="state">
+        <label for="zip" id="zipLabel">Zip Code</label>
+        <input type="number" class="white-text" id="zip">
+        <button id="addEvent">Add Event</button>
+        <button id="resetForm">Reset</button>
+      </form>
+    </div>
+    <div class="container newEvents-wrapper">
+      
+      <div class="row">
 
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
+        <ul class="collapsible expandable" id="listLocation">
 
-        <!-- All Js below -->
+        </ul>
 
-        <!-- Moment js -->
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        <!-- firebase js -->
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-        <!-- jQuery js -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <!-- materialize js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <!-- leaflet js -->
-        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-            integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-            crossorigin=""></script>
-        <!-- style js file -->
-        <script src="Assets/js/style.js"></script>
-        <!-- script js file -->
-        <script src="Assets/js/script.js"></script>
->>>>>>> 9cc51e39f73fefe6480a8be87ddf73dc046c9c49
+      </div>
+    </div>
+
+    <!-- All Js below -->
+
+    <!-- Moment js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- firebase js -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- jQuery js -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- materialize js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- leaflet js -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+      integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+      crossorigin=""></script>
+    <!-- style js file -->
+    <script src="Assets/js/style.js"></script>
+    <!-- script js file -->
+    <script src="Assets/js/script.js"></script>
 </body>
 
 </html>
