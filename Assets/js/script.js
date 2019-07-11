@@ -194,8 +194,8 @@ function createEventLists(name, date, description, game, gameName, gameDesc,
     modFooter.append('<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>');
     $(mod).append(modContent);
     $(mod).append(modFooter);
-    $('.modal').modal();
     $('body').append(mod);
+    $('.modal').modal();
 
     // list creation and content
     const listItem = $("<li>");
