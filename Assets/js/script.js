@@ -64,7 +64,7 @@ function addMapPin(longitude, latitude, name, date) {
     const marker = L.marker([latitude, longitude]).addTo(mymap);
     marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
 }
-function resetLabels(){
+function resetLabels() {
     $('#zipLabel').empty().append('Zip Code');
     $('#zipLabel').attr('class', '');
     $('#zip').attr('class', 'white-text');
@@ -114,7 +114,7 @@ function addEvent() {
         ".json?access_token=pk.eyJ1IjoiZ2FtZWtpbmczMTQiLCJhIjoiY2p4eTQ0eHR2MDZkNjNjbHQxMG1vZGl3YiJ9.KvEGNREjNS12RUEqFehhkw&cachebuster=1562436483413" +
         "&autocomplete=true&types=address%2Cpostcode&limit=1"
     if (zip > 501 && zip < 99950 && m.isValid() === true && name != ''
-        && desc != '' && type != '' && street != '' && city != '' ) {
+        && desc != '' && type != '' && street != '' && city != '') {
         resetLabels();
         $.ajax({
             url: queryString,
@@ -136,49 +136,50 @@ function addEvent() {
             });
         })
     }
-    else if (zip < 501 || zip > 99950){
+    else if (zip < 501 || zip > 99950) {
         $('#zipLabel').empty().append('Zip Code - Invalid Zip');
         $('#zipLabel').attr('class', 'red-text');
         $('#zip').attr('class', 'red-text');
     }
-    else if (!m.isValid()){
+    else if (!m.isValid()) {
         $('#dateLabel').empty().append('Event Date - Invalid Date');
         $('#dateLabel').attr('class', 'red-text');
         $('#date').attr('class', 'red-text');
     }
-    else if (name === ''){
+    else if (name === '') {
         $('#nameLabel').empty().append('Event Name - Please enter a name');
         $('#nameLabel').attr('class', 'red-text');
         $('#name').attr('class', 'red-text');
     }
-    else if (desc === ''){
+    else if (desc === '') {
         $('#descLabel').empty().append('Description - Please enter a description');
         $('#descLabel').attr('class', 'red-text');
         $('#desc').attr('class', 'red-text');
     }
-    else if (type === ''){
+    else if (type === '') {
         $('#typeLabel').empty().append('Game to be Played - Please enter a game');
         $('#typeLabel').attr('class', 'red-text');
         $('#type').attr('class', 'red-text');
     }
-    else if (street === ''){
+    else if (street === '') {
         $('#streetLabel').empty().append('Street Address - Please enter an address');
         $('#streetLabel').attr('class', 'red-text');
         $('#street').attr('class', 'red-text');
     }
-    else if (city === ''){
+    else if (city === '') {
         $('#cityLabel').empty().append('City - Please enter a city');
         $('#cityLabel').attr('class', 'red-text');
         $('#city').attr('class', 'red-text');
     }
-    else if (state === ''){
+    else if (state === '') {
         $('#stateLabel').empty().append('State - Please enter a state');
         $('#stateLabel').attr('class', 'red-text');
         $('#state').attr('class', 'red-text');
     }
 }
 // function for dynamic event list generation
-function createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic) {
+function createEventLists(name, date, description, game, gameName, gameDesc,
+    gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic) {
     // modal creation
     const mod = $(`<div class="modal" id="modal${game}">`);
     const modContent = $('<div class="modal-content">');
@@ -195,7 +196,7 @@ function createEventLists(name, date, description, game, gameName, gameDesc, gam
     $(mod).append(modFooter);
     $('.modal').modal();
     $('body').append(mod);
-    
+
     // list creation and content
     const listItem = $("<li>");
     const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
@@ -215,7 +216,8 @@ function createEventLists(name, date, description, game, gameName, gameDesc, gam
     $("#listLocation").append(listItem);
 }
 
-function resetForm(){
+function resetForm() {
+    event.preventDefault();
     resetLabels();
     document.getElementById("myForm").reset();
 }
