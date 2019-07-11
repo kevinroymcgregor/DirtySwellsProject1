@@ -38,6 +38,7 @@ dataRef.ref().on('child_added', function (snapshot) {
     let game;
     let lat;
     let long;
+    let m;
 
     name = snapshot.val().name;
     date = snapshot.val().date;
@@ -75,6 +76,40 @@ function addMapPin(longitude, latitude, name, date) {
     marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
 }
 
+function resetLabels(){
+    $('#zipLabel').empty().append('Zip Code');
+    $('#zipLabel').attr('class', '');
+    $('#zip').attr('class', 'white-text');
+
+    $('#dateLabel').empty().append('Event Date');
+    $('#dateLabel').attr('class', '');
+    $('#date').attr('class', 'white-text');
+
+    $('#nameLabel').empty().append('Event Name');
+    $('#nameLabel').attr('class', '');
+    $('#name').attr('class', 'white-text');
+
+    $('#descLabel').empty().append('Description');
+    $('#descLabel').attr('class', '');
+    $('#desc').attr('class', 'white-text');
+
+    $('#typeLabel').empty().append('Type');
+    $('#typeLabel').attr('class', '');
+    $('#type').attr('class', 'white-text');
+
+    $('#streetLabel').empty().append('Street Address');
+    $('#streetLabel').attr('class', '');
+    $('#street').attr('class', 'white-text');
+
+    $('#cityLabel').empty().append('City');
+    $('#cityLabel').attr('class', '');
+    $('#city').attr('class', 'white-text');
+
+    $('#stateLabel').empty().append('State');
+    $('#stateLabel').attr('class', '');
+    $('#state').attr('class', 'white-text');
+}
+
 // add event to firebase from form on page
 function addEvent() {
     event.preventDefault();
@@ -86,14 +121,15 @@ function addEvent() {
     const city = $('#city').val();
     const state = $('#state').val();
     const zip = $('#zip').val();
+    const m = moment(date);
+    console.log(desc);
     const queryString = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + street +
         "%2C%20" + city + "%2C%20" + state + "%20" + zip +
-        ".json?access_token=pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g&cachebuster=1562436483413" +
+        ".json?access_token=pk.eyJ1IjoiZ2FtZWtpbmczMTQiLCJhIjoiY2p4eTQ0eHR2MDZkNjNjbHQxMG1vZGl3YiJ9.KvEGNREjNS12RUEqFehhkw&cachebuster=1562436483413" +
         "&autocomplete=true&types=address%2Cpostcode&limit=1"
-    if (zip > 501 && zip < 99950) {
-        $('#zipLabel').empty().append('Zip Code');
-        $('#zipLabel').attr('class', '');
-        $('#zip').attr('class', 'white-text');
+    if (zip > 501 && zip < 99950 && m.isValid() === true && name != ''
+        && desc != '' && type != '' && street != '' && city != '' ) {
+        resetLabels();
         $.ajax({
             url: queryString,
             method: "GET"
@@ -116,12 +152,46 @@ function addEvent() {
             });
         })
     }
-    else {
+    else if (zip < 501 || zip > 99950){
         $('#zipLabel').empty().append('Zip Code - Invalid Zip');
         $('#zipLabel').attr('class', 'red-text');
         $('#zip').attr('class', 'red-text');
-    };
-    console.log('stuff goes here');
+    }
+    else if (!m.isValid()){
+        $('#dateLabel').empty().append('Event Date - Invalid Date');
+        $('#dateLabel').attr('class', 'red-text');
+        $('#date').attr('class', 'red-text');
+    }
+    else if (name === ''){
+        $('#nameLabel').empty().append('Event Name - Please enter a name');
+        $('#nameLabel').attr('class', 'red-text');
+        $('#name').attr('class', 'red-text');
+    }
+    else if (desc === ''){
+        $('#descLabel').empty().append('Description - Please enter a description');
+        $('#descLabel').attr('class', 'red-text');
+        $('#desc').attr('class', 'red-text');
+    }
+    else if (type === ''){
+        $('#typeLabel').empty().append('Game Type - Please enter a game');
+        $('#typeLabel').attr('class', 'red-text');
+        $('#type').attr('class', 'red-text');
+    }
+    else if (street === ''){
+        $('#streetLabel').empty().append('Street Address - Please enter an address');
+        $('#streetLabel').attr('class', 'red-text');
+        $('#street').attr('class', 'red-text');
+    }
+    else if (city === ''){
+        $('#cityLabel').empty().append('City - Please enter a city');
+        $('#cityLabel').attr('class', 'red-text');
+        $('#city').attr('class', 'red-text');
+    }
+    else if (state === ''){
+        $('#stateLabel').empty().append('State - Please enter a state');
+        $('#stateLabel').attr('class', 'red-text');
+        $('#state').attr('class', 'red-text');
+    }
 }
 
 // function for dynamic event list generation
