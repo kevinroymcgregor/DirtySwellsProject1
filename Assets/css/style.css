@@ -72,8 +72,17 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 4px;
 }
 
+
 .events-header {
     color: grey;
     background-color: yellow;
     font-family: "Press Start 2P";
+}
+
+.collapsible-body {
+    background: rgb(51, 204, 255);
+}
+
+.newEvent:hover {
+    background-color: orange;
 }
