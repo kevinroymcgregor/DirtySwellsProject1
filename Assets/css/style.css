@@ -1,9 +1,3 @@
-img {
-    width: 250px;
-    margin-top: 15px;
-
-}
-
 body {
     background-color: rgb(46, 45, 45);
 }
@@ -17,6 +11,7 @@ body {
 
 .brand-logo {
     margin: -2px 7px 5px 7px;
+    font-family: "Press Start 2P";
 }
 
 .events-wrapper {
@@ -45,13 +40,14 @@ body {
 
 input[type="number"] {
     -webkit-appearance: textfield;
-       -moz-appearance: textfield;
-            appearance: textfield;
-  }
-  input[type=number]::-webkit-inner-spin-button, 
-  input[type=number]::-webkit-outer-spin-button { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
-  }
+}
 
 #mapDiv {
     border: 2px double rgb(65, 95, 2);
@@ -78,3 +74,17 @@ input[type="number"] {
     margin: 2px 0;
     border-radius: 4px;
 }
+
+.events-header {
+    color: grey;
+    background-color: yellow;
+    font-family: "Press Start 2P";
+}
+
+
+/* .collapsible-body {
+    background: rgb(173, 173, 173);
+    color: whitesmoke;
+    font-family: "Press Start 2P";
+    font-weight: 100;
+} */
