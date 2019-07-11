@@ -27,9 +27,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
+    accessToken: 'pk.eyJ1IjoiZ2FtZWtpbmczMTQiLCJhIjoiY2p4eTQ0eHR2MDZkNjNjbHQxMG1vZGl3YiJ9.KvEGNREjNS12RUEqFehhkw'
 }).addTo(mymap);
-
 
 dataRef.ref().on('child_added', function (snapshot) {
     let name;
@@ -126,34 +125,37 @@ function addEvent() {
 
 // function for dynamic event list generation
 function createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic) {
-    const listItem = $("<li>");
-    const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
-    const listDivBody = $("<div class='collapsible-body'><span>" + description + "</span></div>");
-
     // modal creation
     const mod = $(`<div class="modal" id="modal${game}">`);
     const modContent = $('<div class="modal-content">');
 
     // modal content
     modContent.append(`<img src=${gamePic}>
-    <h4>${gameName}</h4>
-    <p>Players: ${gameMinPlayers} - ${gameMaxPlayers}</p>
-    <p>Playtime (minutes): ${gameMinPlayTime} - ${gameMaxPlayTime}</p>
-    <p>Description: ${gameDesc}</p>`);
+        <h4>${gameName}</h4>
+        <p>Players: ${gameMinPlayers} - ${gameMaxPlayers}</p>
+        <p>Playtime (minutes): ${gameMinPlayTime} - ${gameMaxPlayTime}</p>
+        <p>Description: ${gameDesc}</p>`);
     const modFooter = $('<div class="modal-footer">');
     modFooter.append('<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>');
     $(mod).append(modContent);
     $(mod).append(modFooter);
     $('.modal').modal();
     $('body').append(mod);
-
+    
+    // list creation and content
+    const listItem = $("<li>");
+    const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
+    const listDivBody = $("<div class='collapsible-body'><span>Event Date: " + date + "</span></div>");
     listDivBody.append($("<br>"));
-    listDivBody.append($("<span>").text(`Event Date: ${date}`));
+    listDivBody.append($("<span>").text(`Game being played: ${game}`));
     listDivBody.append($("<br>"));
-    listDivBody.append($("<span>").text(`Event Game: ${game}`));
     listDivBody.append($("<br>"));
     listDivBody.append($('<button>').text('Game Info').attr('data-target', `modal${game}`).attr('class', "btn modal-trigger waves-effect"));
-
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<span>").text(`${description}`));
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<br>"));
     listItem.append(listDivHeader);
     listItem.append(listDivBody);
     $("#listLocation").append(listItem);
