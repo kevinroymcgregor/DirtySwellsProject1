@@ -53,7 +53,6 @@ dataRef.ref().on('child_added', function (snapshot) {
         url: boardgameString,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
 
         // name, description, min players, max players, min play time, max play time, picture, 
         let gameName = response.games[0].name;
@@ -93,7 +92,7 @@ function resetLabels(){
     $('#descLabel').attr('class', '');
     $('#desc').attr('class', 'white-text');
 
-    $('#typeLabel').empty().append('Type');
+    $('#typeLabel').empty().append('Game to be Played');
     $('#typeLabel').attr('class', '');
     $('#type').attr('class', 'white-text');
 
@@ -122,7 +121,6 @@ function addEvent() {
     const state = $('#state').val();
     const zip = $('#zip').val();
     const m = moment(date);
-    console.log(desc);
     const queryString = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + street +
         "%2C%20" + city + "%2C%20" + state + "%20" + zip +
         ".json?access_token=pk.eyJ1IjoiZ2FtZWtpbmczMTQiLCJhIjoiY2p4eTQ0eHR2MDZkNjNjbHQxMG1vZGl3YiJ9.KvEGNREjNS12RUEqFehhkw&cachebuster=1562436483413" +
@@ -134,8 +132,6 @@ function addEvent() {
             url: queryString,
             method: "GET"
         }).then(function (response) {
-            console.log(response);
-            console.log(response.features[0].center);
             const latitude = response.features[0].center[1];
             const longitude = response.features[0].center[0];
             dataRef.ref().push({
@@ -173,7 +169,7 @@ function addEvent() {
         $('#desc').attr('class', 'red-text');
     }
     else if (type === ''){
-        $('#typeLabel').empty().append('Game Type - Please enter a game');
+        $('#typeLabel').empty().append('Game to be Played - Please enter a game');
         $('#typeLabel').attr('class', 'red-text');
         $('#type').attr('class', 'red-text');
     }
@@ -229,4 +225,10 @@ function createEventLists(name, date, description, game, gameName, gameDesc, gam
     $("#listLocation").append(listItem);
 }
 
+function resetForm(){
+    resetLabels();
+    document.getElementById("myForm").reset();
+}
+
 $(document).on("click", '#addEvent', addEvent);
+$(document).on("click", '#resetForm', resetForm);
