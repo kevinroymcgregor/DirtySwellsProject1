@@ -1,5 +1,5 @@
 # DirtySwellsProject1
 
-This is our project
+This is an app to map in person gaming events.
 
-We are awesome
+Maintained by kevinroymcgregor, jonpking, mariorents, flacko2
