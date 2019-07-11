@@ -1,0 +1,88 @@
+body {
+    background-color: rgb(46, 45, 45);
+}
+
+.navwrapper {
+    background-color: rgb(99, 143, 5);
+    height: 12vh;
+    top: 0;
+    width: 100%;
+}
+
+.brand-logo {
+    margin: -2px 7px 5px 7px;
+    font-family: "Press Start 2P";
+}
+
+.events-wrapper {
+    display: block;
+    justify-content: center;
+    width: 80vw;
+    height: 40vw;
+    margin: 14px auto;
+}
+
+.event-nav {
+    background-color: rgb(99, 143, 5);
+    border-bottom: none;
+    height: 4vh;
+    padding: 4px 0;
+    border-radius: 4px 4px 0 0;
+}
+
+#addEvents-wrapper {
+    padding: 4px 6px;
+    border: double 2px rgb(65, 95, 2);
+    display: none;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+#mapDiv {
+    border: 2px double rgb(65, 95, 2);
+    border-radius: 0 0 2px 2px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#myButton {
+    display: none;
+}
+
+.myCarousel-object {
+    background-color: #0D0D0D;
+}
+
+#addEvent-toggle {
+    width: 100%;
+    height: 3vh;
+    border: none;
+    background-color: rgb(99, 143, 5);
+    margin: 2px 0;
+    border-radius: 4px;
+}
+
+
+.events-header {
+    color: grey;
+    background-color: yellow;
+    font-family: "Press Start 2P";
+}
+
+.collapsible-body {
+    background: rgb(51, 204, 255);
+}
+
+.newEvent:hover {
+    background-color: orange;
+}
