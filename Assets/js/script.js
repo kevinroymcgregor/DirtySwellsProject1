@@ -1,8 +1,11 @@
+$(document).ready(function () {
+    $('.modal').modal();
+});
+
 var elem = document.querySelector('.collapsible.expandable');
 var instance = M.Collapsible.init(elem, {
     accordion: false
 });
-
 const config = {
     apiKey: "AIzaSyC6qpXOXBf2vixbC6YTlN6ihu8i9h9OkW8",
     authDomain: "gamr-13304.firebaseapp.com",
@@ -12,9 +15,7 @@ const config = {
     messagingSenderId: "629746508175",
     appId: "1:629746508175:web:f78d2c9edbb66f2f"
 };
-
 firebase.initializeApp(config);
-
 const dataRef = firebase.database();
 
 // create map on page
@@ -23,9 +24,8 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
-    accessToken: 'pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g'
+    accessToken: 'pk.eyJ1IjoiZ2FtZWtpbmczMTQiLCJhIjoiY2p4eTQ0eHR2MDZkNjNjbHQxMG1vZGl3YiJ9.KvEGNREjNS12RUEqFehhkw'
 }).addTo(mymap);
-
 dataRef.ref().on('child_added', function (snapshot) {
     let name;
     let date;
@@ -33,46 +33,74 @@ dataRef.ref().on('child_added', function (snapshot) {
     let game;
     let lat;
     let long;
-
-    const queryString = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + snapshot.val().street +
-        "%2C%20" + snapshot.val().city + "%2C%20" + snapshot.val().state + "%20" + snapshot.val().zip +
-        ".json?access_token=pk.eyJ1Ijoiam9ucGtpbmciLCJhIjoiY2p4bW1kMjdsMDVkejNtcGF3azR6OWgyNSJ9.9PyL0KoB3385l1Se0xXz0g&cachebuster=1562436483413" +
-        "&autocomplete=true&types=address%2Cpostcode&limit=1"
-    $.ajax({
-        url: queryString,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-        console.log(response.features[0].center);
-        lat = response.features[0].center[1];
-        long = response.features[0].center[0];
-    });
-
+    let m;
     name = snapshot.val().name;
     date = snapshot.val().date;
     description = snapshot.val().desc;
     game = snapshot.val().type;
-
-    createEventLists(name, date, description, game);
-    addMapPin(long, lat, name, date);
-
+    lat = snapshot.val().lat;
+    long = snapshot.val().long;
     const boardgameString = "https://www.boardgameatlas.com/api/search?name="
         + snapshot.val().type + "&client_id=SB1VGnDv7M";
     $.ajax({
         url: boardgameString,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
-    })
 
+        // name, description, min players, max players, min play time, max play time, picture, 
+        let gameName = response.games[0].name;
+        let gameDesc = response.games[0].description;
+        let gameMinPlayers = response.games[0].min_players;
+        let gameMaxPlayers = response.games[0].max_players;
+        let gameMinPlayTime = response.games[0].min_playtime;
+        let gameMaxPlayTime = response.games[0].max_playtime;
+        let gamePic = response.games[0].images.small;
+        createEventLists(name, date, description, game, gameName, gameDesc, gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic);
+    });
+    addMapPin(long, lat, name, date);
 });
-
 // add a pin to the map
 function addMapPin(longitude, latitude, name, date) {
-    const marker = L.marker([33.3, -111.8]).addTo(mymap);
+    const marker = L.marker([latitude, longitude]).addTo(mymap);
     marker.bindPopup("<h5>" + name + "</h5><hr><p>" + date + "</p>").openPopup();
 }
+<<<<<<< HEAD
 
+=======
+function resetLabels() {
+    $('#zipLabel').empty().append('Zip Code');
+    $('#zipLabel').attr('class', '');
+    $('#zip').attr('class', 'white-text');
+
+    $('#dateLabel').empty().append('Event Date');
+    $('#dateLabel').attr('class', '');
+    $('#date').attr('class', 'white-text');
+
+    $('#nameLabel').empty().append('Event Name');
+    $('#nameLabel').attr('class', '');
+    $('#name').attr('class', 'white-text');
+
+    $('#descLabel').empty().append('Description');
+    $('#descLabel').attr('class', '');
+    $('#desc').attr('class', 'white-text');
+
+    $('#typeLabel').empty().append('Game to be Played');
+    $('#typeLabel').attr('class', '');
+    $('#type').attr('class', 'white-text');
+
+    $('#streetLabel').empty().append('Street Address');
+    $('#streetLabel').attr('class', '');
+    $('#street').attr('class', 'white-text');
+
+    $('#cityLabel').empty().append('City');
+    $('#cityLabel').attr('class', '');
+    $('#city').attr('class', 'white-text');
+
+    $('#stateLabel').empty().append('State');
+    $('#stateLabel').attr('class', '');
+    $('#state').attr('class', 'white-text');
+}
+>>>>>>> 9cc51e39f73fefe6480a8be87ddf73dc046c9c49
 // add event to firebase from form on page
 function addEvent() {
     event.preventDefault();
@@ -84,30 +112,119 @@ function addEvent() {
     const city = $('#city').val();
     const state = $('#state').val();
     const zip = $('#zip').val();
-    dataRef.ref().push({
-        name: name,
-        desc: desc,
-        date: date,
-        type: type,
-        street: street,
-        city: city,
-        state: state,
-        zip: zip
-    });
+    const m = moment(date);
+    const queryString = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + street +
+        "%2C%20" + city + "%2C%20" + state + "%20" + zip +
+        ".json?access_token=pk.eyJ1IjoiZ2FtZWtpbmczMTQiLCJhIjoiY2p4eTQ0eHR2MDZkNjNjbHQxMG1vZGl3YiJ9.KvEGNREjNS12RUEqFehhkw&cachebuster=1562436483413" +
+        "&autocomplete=true&types=address%2Cpostcode&limit=1"
+    if (zip > 501 && zip < 99950 && m.isValid() === true && name != ''
+        && desc != '' && type != '' && street != '' && city != '') {
+        resetLabels();
+        $.ajax({
+            url: queryString,
+            method: "GET"
+        }).then(function (response) {
+            const latitude = response.features[0].center[1];
+            const longitude = response.features[0].center[0];
+            dataRef.ref().push({
+                name: name,
+                desc: desc,
+                date: date,
+                type: type,
+                street: street,
+                city: city,
+                state: state,
+                zip: zip,
+                lat: latitude,
+                long: longitude
+            });
+        })
+    }
+    else if (zip < 501 || zip > 99950) {
+        $('#zipLabel').empty().append('Zip Code - Invalid Zip');
+        $('#zipLabel').attr('class', 'red-text');
+        $('#zip').attr('class', 'red-text');
+    }
+    else if (!m.isValid()) {
+        $('#dateLabel').empty().append('Event Date - Invalid Date');
+        $('#dateLabel').attr('class', 'red-text');
+        $('#date').attr('class', 'red-text');
+    }
+    else if (name === '') {
+        $('#nameLabel').empty().append('Event Name - Please enter a name');
+        $('#nameLabel').attr('class', 'red-text');
+        $('#name').attr('class', 'red-text');
+    }
+    else if (desc === '') {
+        $('#descLabel').empty().append('Description - Please enter a description');
+        $('#descLabel').attr('class', 'red-text');
+        $('#desc').attr('class', 'red-text');
+    }
+    else if (type === '') {
+        $('#typeLabel').empty().append('Game to be Played - Please enter a game');
+        $('#typeLabel').attr('class', 'red-text');
+        $('#type').attr('class', 'red-text');
+    }
+    else if (street === '') {
+        $('#streetLabel').empty().append('Street Address - Please enter an address');
+        $('#streetLabel').attr('class', 'red-text');
+        $('#street').attr('class', 'red-text');
+    }
+    else if (city === '') {
+        $('#cityLabel').empty().append('City - Please enter a city');
+        $('#cityLabel').attr('class', 'red-text');
+        $('#city').attr('class', 'red-text');
+    }
+    else if (state === '') {
+        $('#stateLabel').empty().append('State - Please enter a state');
+        $('#stateLabel').attr('class', 'red-text');
+        $('#state').attr('class', 'red-text');
+    }
 }
-
 // function for dynamic event list generation
-function createEventLists(name, date, description, game) {
+function createEventLists(name, date, description, game, gameName, gameDesc,
+    gameMinPlayers, gameMaxPlayers, gameMinPlayTime, gameMaxPlayTime, gamePic) {
+    // modal creation
+    const mod = $(`<div class="modal" id="modal${game}">`);
+    const modContent = $('<div class="modal-content">');
+
+    // modal content
+    modContent.append(`<img src=${gamePic}>
+        <h4>${gameName}</h4>
+        <p>Players: ${gameMinPlayers} - ${gameMaxPlayers}</p>
+        <p>Playtime (minutes): ${gameMinPlayTime} - ${gameMaxPlayTime}</p>
+        <p>Description: ${gameDesc}</p>`);
+    const modFooter = $('<div class="modal-footer">');
+    modFooter.append('<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>');
+    $(mod).append(modContent);
+    $(mod).append(modFooter);
+    $('.modal').modal();
+    $('body').append(mod);
+
+    // list creation and content
     const listItem = $("<li>");
     const listDivHeader = $("<div class='collapsible-header'>" + name + "</div>");
-    const listDivBody = $("<div class='collapsible-body'><span>" + description + "</span></div>");
+    const listDivBody = $("<div class='collapsible-body'><span>Event Date: " + date + "</span></div>");
     listDivBody.append($("<br>"));
-    listDivBody.append($("<span>").text(`Event Date: ${date}`));
+    listDivBody.append($("<span>").text(`Game being played: ${game}`));
     listDivBody.append($("<br>"));
-    listDivBody.append($("<span>").text(`Event Game: ${game}`));
+    listDivBody.append($("<br>"));
+    listDivBody.append($('<button>').text('Game Info').attr('data-target', `modal${game}`).attr('class', "btn modal-trigger waves-effect"));
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<span>").text(`${description}`));
+    listDivBody.append($("<br>"));
+    listDivBody.append($("<br>"));
     listItem.append(listDivHeader);
     listItem.append(listDivBody);
     $("#listLocation").append(listItem);
 }
 
+function resetForm() {
+    event.preventDefault();
+    resetLabels();
+    document.getElementById("myForm").reset();
+}
+
 $(document).on("click", '#addEvent', addEvent);
+$(document).on("click", '#resetForm', resetForm);
