@@ -53,7 +53,7 @@ dataRef.ref().on('child_added', function (snapshot) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        
+
         // name, description, min players, max players, min play time, max play time, picture, 
         let gameName = response.games[0].name;
         let gameDesc = response.games[0].description;
@@ -133,10 +133,10 @@ function createEventLists(name, date, description, game, gameName, gameDesc, gam
     // modal creation
     const mod = $(`<div class="modal" id="modal${game}">`);
     const modContent = $('<div class="modal-content">');
-    
+
     // modal content
     modContent.append(`<img src=${gamePic}>
-    <h4>Game Name: ${gameName}</h4>
+    <h4>${gameName}</h4>
     <p>Players: ${gameMinPlayers} - ${gameMaxPlayers}</p>
     <p>Playtime (minutes): ${gameMinPlayTime} - ${gameMaxPlayTime}</p>
     <p>Description: ${gameDesc}</p>`);
