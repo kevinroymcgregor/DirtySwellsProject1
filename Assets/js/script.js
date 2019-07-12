@@ -203,7 +203,7 @@ function createEventLists(name, date, description, game, gameName, gameDesc,
     const listDivBody = $("<div class='collapsible-body'><span>Event Date: " + date + "</span></div>");
     listDivBody.append($("<br>"));
     listDivBody.append($("<span>").text(`Game being played: ${game}`));
-    // listDivBody.append($("<br>"));
+    listDivBody.append($("<br>"));
     listDivBody.append($("<br>"));
     // listDivBody.append($("<br>"));
     listDivBody.append($("<span>").text(`${description}`));
