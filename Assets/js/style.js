@@ -2,7 +2,9 @@
 $("#addEvent-toggle").click(function () {
   $("#addEvents-wrapper").slideToggle("slow");
   $("#mapDiv").slideToggle("slow");
+  $(".event-nav").slideToggle("slow");
 });
+
 
 // anything after this is for materilize... DO NOT TOUCH
 $(document).ready(function () {
